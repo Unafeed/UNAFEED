@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 
 // komponen
-import Banner from './1LandingPage/aBanner'
-import Layanan from './1LandingPage/bLayanan'
-import Founder from './1LandingPage/cFounder'
-import Testimoni from './1LandingPage/dTestimoni'
-import Footer from './1LandingPage/eFooter'
+import Banner from './1Home/aBanner'
+import Layanan from './1Home/bLayanan'
+import Founder from './1Home/cFounder'
+import Footer from './1Home/eFooter'
 
 class LandingPage extends Component {
     render(){
@@ -14,8 +13,7 @@ class LandingPage extends Component {
 
               <Banner/> 
               <Layanan/>
-              <Founder/> 
-              <Testimoni/>
+              <Founder/>
               <Footer/>
                 
             </div>

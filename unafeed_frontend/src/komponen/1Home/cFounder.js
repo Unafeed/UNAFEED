@@ -14,7 +14,7 @@ class Founder extends Component {
                     <div className="d-flex team-w3ls-row pt-xl-5 pt-md-3">
                         <div className="col-lg-3 col-sm-6">
                             <div className="box20">
-                                <img src="img/fjati.jpg" alt="" className="img-fluid" />
+                                <img src="img/fraka.png" alt="" className="img-fluid" />
                                 <div className="box-content">
                                     <h3 className="title">Raka</h3>
                                     <span className="post">CFO</span>
@@ -83,7 +83,7 @@ class Founder extends Component {
                         </div>
                         <div className="col-lg-3 col-sm-6 my-sm-0 my-4">
                             <div className="box20 active">
-                                <img src="img/flintang.jpg" alt="" className="img-fluid" />
+                                <img src="img/fapiz.png" alt="" className="img-fluid" />
                                 <div className="box-content active">
                                     <h3 className="title">Apiz</h3>
                                     <span className="post">CEO-CMO</span>

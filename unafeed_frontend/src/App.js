@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import SimpleStorage from "react-simple-storage";
+import { Route, withRouter } from 'react-router-dom'
 
 // komponen
-import LandingPage from './komponen/1LandingPage'
+import HomeNoLogin from './komponen/1HomeNoLogin'
+import HomeLogin from './komponen/1HomeLogin'
+import ProfilUser from './komponen/2ProfilUser'
 
 class App extends Component {
 
@@ -70,20 +73,20 @@ class App extends Component {
       user: '',
       statusLogin: false
     })
-    window.location.replace("/")
+    this.props.history.push("/")
   }
 
   render(){
 
     let header
-    if (this.state.statusLogin == true){
+    if (this.state.statusLogin){
       header = (
         <header>
           <div className="container-fluid">
             <div className="header d-md-flex justify-content-between align-items-center py-sm-4 py-3 px-xl-5 px-lg-3 px-2">
               <div id="logo">
-                <h1><a className="" href="index.html">
-                  <img src='img/logo.png' width='160px'/>
+                <h1><a className="" href="/">
+                  <img src='/img/logo.png' width='160px'/>
                 </a></h1>
               </div>
               <div className="nav_w3ls">
@@ -91,7 +94,7 @@ class App extends Component {
                   <label for="drop" className="toggle toogle-2">Menu</label>
                   <input type="checkbox" id="drop" />
                   <ul className="menu">
-                    <li className="active"><a href="index.html">Beranda</a></li>
+                    <li className="active"><a href="/">Beranda</a></li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2"><a href="about.html">
                       Tentang
                     </a></li>
@@ -116,15 +119,23 @@ class App extends Component {
                       Hubungi Kami
                     </a></li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
-                      <a href="#">
-                        {this.state.user.unama}&nbsp; 
+                      <a href="">
+                        <img src={this.state.user.ufoto} width='30px' className='rounded-circle'/>
+                        &nbsp;{this.state.user.unama}&nbsp; 
                         <span className="fa fa-angle-down" aria-hidden="true"></span>
                       </a>
                       <input type="checkbox" id="drop-2" />
                       <ul>
                         <li>
-                          <a onClick={this.logout} href="" className="drop-text">
+                          <a href={`/profil`} className="drop-text">
                           <i className="fas fa-user"></i>
+                          &nbsp;
+                          Edit Profil
+                          </a>
+                        </li>
+                        <li>
+                          <a onClick={this.logout} href="" className="drop-text">
+                          <i className="fas fa-sign-out-alt"></i>
                           &nbsp;
                           Logout
                           </a>
@@ -144,8 +155,8 @@ class App extends Component {
           <div className="container-fluid">
             <div className="header d-md-flex justify-content-between align-items-center py-sm-4 py-3 px-xl-5 px-lg-3 px-2">
               <div id="logo">
-                <h1><a className="" href="index.html">
-                  <img src='img/logo.png' width='160px'/>
+                <h1><a className="" href="/">
+                  <img src='/img/logo.png' width='160px'/>
                 </a></h1>
               </div>
               <div className="nav_w3ls">
@@ -218,8 +229,6 @@ class App extends Component {
         <SimpleStorage parent={this} />
 
         {header}        
-
-        <LandingPage/>
 
         {/* modal login */}
         <div class="mt-5 modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -338,9 +347,14 @@ class App extends Component {
           </div>
         </div>
 
+        <div>
+          <Route exact path="/" component={(this.state.statusLogin) ? HomeLogin : HomeNoLogin}/>
+          <Route path="/profil" render={(props) => <ProfilUser {...props} user={this.state.user} />}/>
+        </div>
+
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
