@@ -4,7 +4,7 @@ class Banner extends Component{
     render(){
         return(
         // banner
-        <div className="mybanner main-w3pvt">
+        <div id='beranda' className="mybanner main-w3pvt">
             <div style={{marginTop: '100px', marginBottom: '100px'}} 
             className="container-fluid">
                 <div className="row">

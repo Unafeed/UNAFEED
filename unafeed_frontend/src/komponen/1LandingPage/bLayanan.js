@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Layanan extends Component{
     render(){
         return(
-        <div>
+        <div id='layanan'>
         
         {/* layanan */}
         <section className="py-5 team-w3ls" id="best">
@@ -14,7 +14,7 @@ class Layanan extends Component{
                 <div className="d-flex team-w3ls-row pt-xl-5 pt-md-3">
                     <div className="col-lg-4 col-sm-6">
                         <div className="box20">
-                            <img src="img/jasa1.jpg" alt="" className="img-fluid" />
+                            <img src="img/jasa1.png" alt="" className="img-fluid" />
                             <div className="box-content">
                                 <h3 className="title">Otomasi</h3>
                                 <span className="post">pakan sidat</span>
@@ -23,19 +23,19 @@ class Layanan extends Component{
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="box20">
-                            <img src="img/jasa1.jpg" alt="" className="img-fluid" />
+                            <img src="img/jasa2.png" alt="" className="img-fluid" />
                             <div className="box-content">
-                                <h3 className="title">Otomasi</h3>
-                                <span className="post">pakan sidat</span>
+                                <h3 className="title">Monitoring</h3>
+                                <span className="post">kondisi kolam</span>
                             </div>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="box20">
-                            <img src="img/jasa1.jpg" alt="" className="img-fluid" />
+                            <img src="img/jasa3.png" alt="" className="img-fluid" />
                             <div className="box-content">
-                                <h3 className="title">Otomasi</h3>
-                                <span className="post">pakan sidat</span>
+                                <h3 className="title">Jual Beli</h3>
+                                <span className="post">bibit, pakan & alat</span>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ class Layanan extends Component{
                         </h3>
                         <p className="font-weight-normal text-white pb-3">
                             {/* <i className='font-weight-bold text-danger'>n&nbsp;</i> */}
-                            <b>Sidat (<i>Anguilla rostrata</i>)</b> adalah spesies golongan ikan yang bentuknya menyerupai ular/belut. 
+                            <b>Sidat (<i>Anguilla sp</i>)</b> adalah spesies golongan ikan yang bentuknya menyerupai ular/belut. 
                             Di Jepang, sidat atau <b><i>unagi</i></b> biasa dijadikan bahan makanan bergizi & bernilai tinggi.
                         </p>
                     </div>

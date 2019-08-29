@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Footer extends Component {
     render(){
         return(
-            <div>
+            <div id='footer'>
 
             <footer className="py-5">
                 <div className="container pt-xl-5 pt-lg-3">
@@ -11,16 +11,16 @@ class Footer extends Component {
                         <div className="col-lg-5 col-md-7 w3l-footer mt-lg-3 text-md-left text-center">
                             <ul className="list-unstyled footer-nav-wthree">
                                 <li className="mr-4">
-                                    <a href="index.html" className="active">Beranda</a>
+                                    <a href="#beranda" className="active">Beranda</a>
                                 </li>
                                 <li className="mr-4">
-                                    <a className="" href="about.html">Tentang</a>
+                                    <a className="" href="#layanan">Layanan</a>
                                 </li>
                                 <li className="mr-4">
-                                    <a className="" href="gallery.html">Galeri</a>
+                                    <a className="" href="#founder">Tentang</a>
                                 </li>
                                 <li>
-                                    <a className="" href="contact.html">Hubungi Kami</a>
+                                    <a className="" href="#footer">Hubungi Kami</a>
                                 </li>
                             </ul>
                         </div>

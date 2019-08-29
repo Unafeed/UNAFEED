@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Founder extends Component {
     render(){
         return(
-            <div>
+            <div id='founder'>
 
             {/* founder */}
             <section className="pb-5 team-w3ls" id="best">
