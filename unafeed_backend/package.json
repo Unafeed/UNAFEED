@@ -1,0 +1,19 @@
+{
+  "name": "unafeed_backend",
+  "version": "1.0.0",
+  "description": "unafeed backend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "unafeed",
+    "lintang",
+    "iot"
+  ],
+  "author": "lintangwisesa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
