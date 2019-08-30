@@ -43,6 +43,19 @@ router.get('/user/:uid', (req, res) => {
     })
 })
 
+// get all unastore's products
+router.get('/product', (req, res) => {
+    var dbStat = 'select * from unastore'
+    db.query(dbStat, (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send(output)
+        }
+    })
+})
+
 // signup
 router.post('/signup', (req, res)=>{
     var dbStat = 'insert into unafeed_users set ?'
@@ -92,6 +105,31 @@ router.post('/login', (req, res)=>{
                     statusLogin: 'ok' 
                 })
             }
+        }
+    })
+})
+
+// update data user
+router.put('/update', (req, res)=>{
+    var dbStat = 'update unafeed_users set ufoto = ?, ualamat = ?, ukabkota = ?, utelp = ? where uid = ?'
+    // var unama = req.body.unama
+    // var uemail = req.body.uemail
+    var ufoto = req.body.ufoto
+    var ualamat = req.body.ualamat
+    var ukabkota = req.body.ukabkota
+    var utelp = req.body.utelp
+    var uid = req.body.uid
+    db.query(dbStat, [ufoto, ualamat, ukabkota, utelp, uid], (error, output) => {
+        if(error){
+            console.log(error)
+            res.send({
+                statusUpdate: 'no'
+            })
+        } else {
+            console.log(output)
+            res.send({
+                statusUpdate: 'ok' 
+            })
         }
     })
 })

@@ -2,12 +2,10 @@ var express = require('express')
 var cors = require('cors')
 var route_mysql = require('./router/route_mysql.js')
 var route_upload = require('./router/route_upload.js')
-var upload = require('express-fileupload')
 
 var app = express()
 app.use(cors())
 app.use('/file', express.static('file'));
-app.use(upload())
 app.use(route_mysql)
 app.use(route_upload)
 

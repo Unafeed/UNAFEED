@@ -7,6 +7,9 @@ import { Route, withRouter } from 'react-router-dom'
 import HomeNoLogin from './komponen/1HomeNoLogin'
 import HomeLogin from './komponen/1HomeLogin'
 import ProfilUser from './komponen/2ProfilUser'
+import UnaStore from './komponen/3UnaStore'
+import UnaSense from './komponen/4UnaSense'
+import UserCart from './komponen/5UserCart'
 
 class App extends Component {
 
@@ -94,14 +97,20 @@ class App extends Component {
                   <label for="drop" className="toggle toogle-2">Menu</label>
                   <input type="checkbox" id="drop" />
                   <ul className="menu">
-                    <li className="active"><a href="/">Beranda</a></li>
-                    <li className="mx-lg-4 mx-md-3 my-md-0 my-2"><a href="about.html">
-                      Tentang
-                    </a></li>
-                    <li><a href="gallery.html">
-                      Galeri
-                    </a></li>
+                    <li className="active">
+                      <a href="/">
+                        Beranda
+                      </a>
+                    </li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
+                      <a href="/unasense">
+                      UnaSense
+                      </a>
+                    </li>
+                    <li><a href="/unastore">
+                      UnaStore
+                    </a></li>
+                    {/* <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
                       <label for="drop-2" className="toggle">
                         Dropdown
                         <span className="fa fa-angle-down" aria-hidden="true"></span>
@@ -114,10 +123,17 @@ class App extends Component {
                         <li><a href="#testi" className="drop-text">Testimonials</a></li>
                         <li><a href="#newsletter" className="drop-text">Newsletter</a></li>
                       </ul>
+                    </li> */}
+                    <li className='mx-lg-4 mx-md-3 my-md-0 my-2'>
+                      <a href="#footer">
+                        Hubungi Kami
+                      </a>
                     </li>
-                    <li><a href="contact.html">
-                      Hubungi Kami
-                    </a></li>
+                    <li>
+                      <a href="/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                      </a>
+                    </li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
                       <a href="">
                         <img src={this.state.user.ufoto} width='30px' className='rounded-circle'/>
@@ -350,6 +366,9 @@ class App extends Component {
         <div>
           <Route exact path="/" component={(this.state.statusLogin) ? HomeLogin : HomeNoLogin}/>
           <Route path="/profil" render={(props) => <ProfilUser {...props} user={this.state.user} />}/>
+          <Route path="/unastore" render={(props) => <UnaStore {...props} user={this.state.user} />}/>
+          <Route path="/unasense" render={(props) => <UnaSense {...props} user={this.state.user} />}/>
+          <Route path="/cart" render={(props) => <UserCart {...props} user={this.state.user} />}/>
         </div>
 
       </div>

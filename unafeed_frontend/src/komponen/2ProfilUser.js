@@ -8,7 +8,7 @@ class ProfilUser extends Component{
         super()
         this.state = {
             nama: '', email: '', alamat: '', kabkota: '', telp: '',
-            foto: 'Foto Anda ...'
+            foto: 'Foto Anda ...', file: '', fotoTerupload: ''
         }
     }
 
@@ -27,14 +27,81 @@ class ProfilUser extends Component{
     telpInput = (event) => {
         this.setState({telp: event.target.value});
     }
-    pilihFoto = (e) => {
+    pilihFotoStep1 = (e) => {
         console.log(e.target.files[0])
         this.setState({
-            foto: e.target.files[0].name
+            foto: e.target.files[0].name,
+            file: e.target.files[0]
         })
     }
-
+    uploadFotoStep2 = () => {
+        const formData = new FormData();
+        formData.append('filename', this.state.file);
+        console.log(formData)
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        };
+        var url = 'http://localhost:1234/file'
+        axios.post(url, formData, config)
+        .then((response) => {
+            alert("OK");
+        }).catch((error) => {
+            alert('NO')
+        });
+    }
+    postFoto = (e) => {
+        this.setState({
+            foto: e.target.files[0].name,
+            file: e.target.files[0]
+        }, ()=>{
+            const formData = new FormData();
+            formData.append('filename', this.state.file);
+            console.log(formData)
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            };
+            var url = 'http://localhost:1234/file'
+            axios.post(url, formData, config)
+            .then((response) => {
+                alert('Foto terupload 🤩 Click simpan untuk mengganti foto.');
+                // console.log(response.data)
+                this.setState({
+                    fotoTerupload: response.data.fotoTerupload
+                })
+            }).catch((error) => {
+                alert('Foto gagal diperbarui 😭 silakan coba lagi 🙏')
+            });
+        })
+    }
+    updateProfil = ()=>{
+        var url = 'http://localhost:1234/update'
+        axios.put(url, {
+            ufoto : this.state.fotoTerupload ? this.state.fotoTerupload : this.props.user.ufoto,
+            ualamat : this.state.alamat ? this.state.alamat : this.props.user.ualamat,
+            ukabkota : this.state.kabkota ? this.state.kabkota : this.props.user.ukabkota,
+            utelp : this.state.telp ? this.state.telp : this.props.user.utelp,
+            uid : this.props.user.uid
+        })
+        .then((x)=>{
+            alert('Profil sukses terupdate 😎')
+            window.location.replace('/')
+        })
+        .catch((x)=>{
+            alert('Profil gagal terupdate 😭 Silakan coba lagi.')
+            window.location.replace('/')
+        })
+    }
     render(){
+
+        var utglreg = String(this.props.user.utglreg).split('T')[0]
+        var ujamreg = String(this.props.user.utglreg).split('T')[1]
+        var utglupdate = String(this.props.user.utglupdate).split('T')[0]
+        var ujamupdate = String(this.props.user.utglupdate).split('T')[1]
+
         return(
             <div>
                 <div style={{paddingTop: '50px'}}></div>
@@ -49,7 +116,7 @@ class ProfilUser extends Component{
 
                                 {/* foto profil */}
                                 <div className="box20 mb-2">
-                                    <img src={this.props.user.ufoto} alt="" className="img-fluid" />
+                                    <img src={this.state.fotoTerupload ? this.state.fotoTerupload : this.props.user.ufoto} alt="" className="img-fluid" />
                                     <div className="box-content">
                                         <h3 className="title">
                                             Upload
@@ -71,7 +138,13 @@ class ProfilUser extends Component{
                                     </label>
                                     &nbsp;&nbsp;{this.state.foto}
                                     <input id="files" style={{visibility:'hidden'}} type="file" name='filename'
-                                    onChange={this.pilihFoto}/>
+                                    onChange={this.postFoto}/>
+
+                                    {/* <form onSubmit={this.uploadFoto}>
+                                        <input type="file" name="filename" onChange= {this.pilihFoto} />
+                                        <button type="submit">Upload</button>
+                                    </form> */}
+
                                 </div>
                             </div>
 
@@ -138,17 +211,28 @@ class ProfilUser extends Component{
                                 </div>
                                 
                                 <div className='mb-5'>
-                                    <p>Terdaftar: <i>{this.props.user.utglreg}</i>
-                                    &nbsp;&nbsp;-
-                                    Terakhir diupdate: <i>{this.props.user.utglupdate}</i></p>
+                                    <p>
+                                        Terdaftar: 
+                                        &nbsp;&nbsp;<i className="fas fa-calendar-check"></i>
+                                        &nbsp;&nbsp;<i>{utglreg}</i> 
+                                        &nbsp;&nbsp;<i className="far fa-clock"></i>
+                                        &nbsp;&nbsp;<i>{String(ujamreg).split('.')[0]}</i>
+                                    </p>
+                                    <p>
+                                        Terakhir diupdate: 
+                                        &nbsp;&nbsp;<i className="fas fa-calendar-check"></i>
+                                        &nbsp;&nbsp;<i>{utglupdate}</i>
+                                        &nbsp;&nbsp;<i className="far fa-clock"></i>
+                                        &nbsp;&nbsp;<i>{String(ujamupdate).split('.')[0]}</i>
+                                    </p>
                                 </div>
 
-                                <button className='btn btn-danger'>
+                                <button className='btn btn-danger' onClick={()=>{window.location.reload()}}>
                                     Batal
                                     <i className="ml-2 fas fa-window-close"></i>
                                 </button>
                                 &nbsp;&nbsp;
-                                <button className='btn btn-success'>
+                                <button className='btn btn-success' onClick={this.updateProfil}>
                                     Simpan
                                     <i className="ml-2 fas fa-save"></i>
                                 </button>
