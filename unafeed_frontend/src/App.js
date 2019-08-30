@@ -10,6 +10,7 @@ import ProfilUser from './komponen/2ProfilUser'
 import UnaStore from './komponen/3UnaStore'
 import UnaSense from './komponen/4UnaSense'
 import UserCart from './komponen/5UserCart'
+import UnaPredict from './komponen/6UnaPredict'
 
 class App extends Component {
 
@@ -104,12 +105,22 @@ class App extends Component {
                     </li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
                       <a href="/unasense">
-                      UnaSense
+                        <i className="fas fa-chart-line"></i>
+                        &nbsp;UnaSense
                       </a>
                     </li>
-                    <li><a href="/unastore">
-                      UnaStore
-                    </a></li>
+                    <li>
+                      <a href="/unaml">
+                        <i className="fas fa-hat-wizard"></i>
+                        &nbsp;UnaPredict
+                      </a>
+                    </li>
+                    <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
+                      <a href="/unastore">
+                        <i className="fas fa-store"></i>
+                        &nbsp;UnaStore
+                      </a>
+                    </li>
                     {/* <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
                       <label for="drop-2" className="toggle">
                         Dropdown
@@ -124,17 +135,17 @@ class App extends Component {
                         <li><a href="#newsletter" className="drop-text">Newsletter</a></li>
                       </ul>
                     </li> */}
-                    <li className='mx-lg-4 mx-md-3 my-md-0 my-2'>
+                    <li>
                       <a href="#footer">
                         Hubungi Kami
                       </a>
                     </li>
-                    <li>
-                      <a href="/cart">
-                        <i class="fas fa-shopping-cart"></i>
+                    <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
+                      <a href={`/cart/${this.state.user.uid}`}>
+                        <i className="fas fa-shopping-cart"></i>
                       </a>
                     </li>
-                    <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
+                    <li>
                       <a href="">
                         <img src={this.state.user.ufoto} width='30px' className='rounded-circle'/>
                         &nbsp;{this.state.user.unama}&nbsp; 
@@ -247,52 +258,52 @@ class App extends Component {
         {header}        
 
         {/* modal login */}
-        <div class="mt-5 modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
+        <div className="mt-5 modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title font-weight-bold" id="exampleModalLabel">
                   User Login
-                  <i class="mx-2 fas fa-user"></i>
+                  <i className="mx-2 fas fa-user"></i>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 
                 {/* input email */}
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="fas fa-envelope"></i>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-envelope"></i>
                     </span>
                   </div>
                   <input value={this.state.email} onChange={this.emailInput} 
-                  type="text" class="form-control" placeholder="Email Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
+                  type="text" className="form-control" placeholder="Email Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
 
                 {/* input password */}
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="fas fa-unlock"></i>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-unlock"></i>
                     </span>
                   </div>
                   <input value={this.state.password} onChange={this.passInput} 
-                  type="password" class="form-control" placeholder="Password Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
+                  type="password" className="form-control" placeholder="Password Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
 
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
+              <div className="modal-footer">
+                <button type="button" className="btn btn-danger" data-dismiss="modal">
                   Batal
-                  <i class="ml-2 fas fa-window-close"></i>
+                  <i className="ml-2 fas fa-window-close"></i>
                 </button>
                 <button onClick={this.login} 
-                type="button" class="btn btn-info">
+                type="button" className="btn btn-info">
                   Login
-                  <i class="ml-2 fas fa-user"></i>
+                  <i className="ml-2 fas fa-user"></i>
                 </button>
               </div>
             </div>
@@ -300,63 +311,63 @@ class App extends Component {
         </div>
 
         {/* modal signup */}
-        <div class="mt-5 modal fade" id="modalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title font-weight-bold" id="exampleModalLabel">
+        <div className="mt-5 modal fade" id="modalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title font-weight-bold" id="exampleModalLabel">
                   User Signup
-                  <i class="mx-2 fas fa-clipboard-check"></i>
+                  <i className="mx-2 fas fa-clipboard-check"></i>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
 
                 {/* input nama */}
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="fas fa-user"></i>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-user"></i>
                     </span>
                   </div>
                   <input value={this.state.nama} onChange={this.namaInput} 
-                  type="text" class="form-control" placeholder="Nama Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
+                  type="text" className="form-control" placeholder="Nama Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
 
                 {/* input email */}
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="fas fa-envelope"></i>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-envelope"></i>
                     </span>
                   </div>
                   <input value={this.state.email} onChange={this.emailInput}  
-                  type="text" class="form-control" placeholder="Email Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
+                  type="text" className="form-control" placeholder="Email Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
                 
                 {/* input password */}
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="fas fa-unlock"></i>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="fas fa-unlock"></i>
                     </span>
                   </div>
                   <input value={this.state.password} onChange={this.passInput}  
-                  type="password" class="form-control" placeholder="Password Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
+                  type="password" className="form-control" placeholder="Password Anda ..." aria-label="Username" aria-describedby="basic-addon1"/>
                 </div>
 
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">
+              <div className="modal-footer">
+                <button type="button" className="btn btn-danger" data-dismiss="modal">
                   Batal
-                  <i class="ml-2 fas fa-window-close"></i>
+                  <i className="ml-2 fas fa-window-close"></i>
                 </button>
                 <button onClick={this.signup} 
-                type="button" class="btn btn-info">
+                type="button" className="btn btn-info">
                   Signup
-                  <i class="ml-2 fas fa-clipboard-check"></i>
+                  <i className="ml-2 fas fa-clipboard-check"></i>
                 </button>
               </div>
             </div>
@@ -368,7 +379,8 @@ class App extends Component {
           <Route path="/profil" render={(props) => <ProfilUser {...props} user={this.state.user} />}/>
           <Route path="/unastore" render={(props) => <UnaStore {...props} user={this.state.user} />}/>
           <Route path="/unasense" render={(props) => <UnaSense {...props} user={this.state.user} />}/>
-          <Route path="/cart" render={(props) => <UserCart {...props} user={this.state.user} />}/>
+          <Route path="/unaml" render={(props) => <UnaPredict {...props} user={this.state.user} />}/>
+          <Route path="/cart/:uid" render={(props) => <UserCart {...props} user={this.state.user} />}/>
         </div>
 
       </div>

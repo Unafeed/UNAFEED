@@ -56,6 +56,72 @@ router.get('/product', (req, res) => {
     })
 })
 
+// get unastore's product by product id
+router.get('/product/:uid', (req, res) => {
+    var dbStat = 'select * from unastore where pid = ?'
+    db.query(dbStat, req.params.uid, (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send(output)
+        }
+    })
+})
+
+// post cart
+router.post('/cart', (req, res) => {
+    var dbStat = 'insert into cart values (?,?,?)'
+    cpid = req.body.cpid
+    cuid = req.body.cuid
+    cjumlah = req.body.cjumlah
+    db.query(dbStat, [cpid, cuid, cjumlah], (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send({
+                status: 'ok',
+                cpid: req.body.cpid,
+                cuid: req.body.cuid,
+                cjumlah: req.body.cjumlah
+            })
+        }
+    })
+})
+
+// get all carts
+// select * from
+// cart c, unafeed_users u, unastore p
+// where c.cuid = u.uid and c.cpid = p.pid;
+router.get('/cart', (req, res) => {
+    var dbStat = 'select * from cart c, unafeed_users u, unastore p where c.cuid = u.uid and c.cpid = p.pid'
+    db.query(dbStat, (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send(output)
+        }
+    })
+})
+
+// get cart by user id
+// select * from
+// cart c, unafeed_users u, unastore p
+// where c.cuid = u.uid and c.cpid = p.pid and u.uid = 1;
+router.get('/cart/:uid', (req, res) => {
+    var dbStat = 'select * from cart c, unafeed_users u, unastore p where c.cuid = u.uid and c.cpid = p.pid and u.uid = ?'
+    db.query(dbStat, req.params.uid, (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send(output)
+        }
+    })
+})
+
 // signup
 router.post('/signup', (req, res)=>{
     var dbStat = 'insert into unafeed_users set ?'

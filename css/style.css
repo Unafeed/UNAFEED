@@ -189,9 +189,13 @@ nav a {
     -ms-transition: 0.5s all;
 }
 
+nav a:hover {
+    color: #fd5c63
+}
+
 
 nav ul li ul li:hover {
-    background: #f8f9fa;
+    background: #fd5c63;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -200,7 +204,7 @@ nav ul li ul li:hover {
 }
 
 .menu li .drop-text:hover {
-    color: #000;
+    color: #fff;
 }
 
 /* Background color change on Hover */
@@ -616,7 +620,7 @@ a.reqe-button {
     color: #fff;
 }
 .button-style:hover {
-    /* background: #fd5c63; */
+    background: #fd5c63;
     color: #fff;
 	letter-spacing:2px;
     -webkit-transition: 0.5s all;
@@ -627,7 +631,8 @@ a.reqe-button {
 }
 
 .button-style-2:hover {
-    /* background: #fff;*/
+    background: #6A8AC3;
+    color: #fff;
 	letter-spacing:2px;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -639,7 +644,7 @@ a.reqe-button {
 /* //banner */
 
 .mybanner{
-    background-image: url('https://www.bibitikan.net/wp-content/uploads/2013/06/budidaya-ikan-nila-pada-kolam-tanah.jpg'); 
+    background-image: url('../img/wallpaperkolam.jpg'); 
     background-size: cover; 
     background-attachment: fixed;
     background-position: bottom;
@@ -773,7 +778,8 @@ a.reqe-button {
 
 /* middle */
 .what-w3ls {
-    background: url(../img/wallpapersidat.jpg) no-repeat center;
+    background: url(../img/sidat1.png) no-repeat center;
+    background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
@@ -944,6 +950,7 @@ p.copy-right-grids a:hover {
 
 .w3social-icons ul li a i {
     color: #fff;
+    background-color: #30c39e;
     font-size: 16px;
     display: block;
     width: 40px;
@@ -960,6 +967,8 @@ p.copy-right-grids a:hover {
 }
 
 .w3social-icons ul li a i:hover {
+    color: #fd5c63;
+    background-color: #FFF;
     border: 2px solid #fff;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
@@ -1051,7 +1060,7 @@ h6.subheading-w3ls {
     background: #fff;
     width: 32px;
     height: 32px;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 32px;
     display: inline-block;
     border-radius: 50%;

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Footer from './1Home/eFooter'
+// npm i react-chartjs-2 chart.js
+import {Line} from 'react-chartjs-2';
 
 class UnaSense extends Component{
 
@@ -12,107 +14,50 @@ class UnaSense extends Component{
 
     render(){
 
+        const data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+              {
+                label: 'My First dataset',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: [65, 59, 80, 81, 56, 55, 40]
+              }
+            ]
+          };
+
         return(
             <div>
                 <div style={{paddingTop: '50px'}}></div>
                 <section className="py-5 team-w3ls" id="best">
                     <div className="container">
                         <h3 className="title-w3 pt-sm-5 text-wh font-weight-bold">
-                            UnaStore
+                            UnaSense
                         </h3>
+                        <p>Pantau kondisi kolam sidat & <b>Una Feeder</b> Anda</p>
                         <div className="d-flex team-w3ls-row pt-xl-5 pt-md-3">
                             
-                            <div className="col-lg-3 col-sm-6">
-                                <div className="box20">
-                                    <img src="img/fraka.png" alt="" className="img-fluid" />
-                                    <div className="box-content">
-                                        <h3 className="title">Raka</h3>
-                                        <span className="post">CFO</span>
-                                    </div>
-                                </div>
-                                <div className="text-right social-icons-section">
-                                    <a className="fac" href="#">
-                                        <i className="fab fa-facebook-square"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-twitter"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-instagram"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-youtube"></i>
-                                    </a>
-                                </div>
+                            <div className='col-sm-6'>
+                                <Line data={data} />
                             </div>
-                            <div className="col-lg-3 col-sm-6 my-sm-0 my-4">
-                                <div className="box20 active">
-                                    <img src="img/fjati.jpg" alt="" className="img-fluid" />
-                                    <div className="box-content active">
-                                        <h3 className="title">Jati</h3>
-                                        <span className="post">COO</span>
-                                    </div>
-                                </div>
-                                <div className="text-right social-icons-section">
-                                    <a className="fac" href="#">
-                                        <i className="fab fa-facebook-square"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-twitter"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-instagram"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-youtube"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-sm-6 mt-lg-0 mt-sm-4 mx-auto">
-                                <div className="box20">
-                                    <img src="img/flintang.jpg" alt="" className="img-fluid" />
-                                    <div className="box-content">
-                                        <h3 className="title">Lintang</h3>
-                                        <span className="post">CTO</span>
-                                    </div>
-                                </div>
-                                <div className="text-right social-icons-section">
-                                    <a className="fac" href="#">
-                                        <i className="fab fa-facebook-square"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-twitter"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-instagram"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-youtube"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="col-lg-3 col-sm-6 my-sm-0 my-4">
-                                <div className="box20 active">
-                                    <img src="img/fapiz.png" alt="" className="img-fluid" />
-                                    <div className="box-content active">
-                                        <h3 className="title">Apiz</h3>
-                                        <span className="post">CEO-CMO</span>
-                                    </div>
-                                </div>
-                                <div className="text-right social-icons-section">
-                                    <a className="fac" href="#">
-                                        <i className="fab fa-facebook-square"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-twitter"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-instagram"></i>
-                                    </a>
-                                    <a className="twitter" href="#">
-                                        <i className="fab fa-youtube"></i>
-                                    </a>
-                                </div>
+
+                            <div className='col-sm-6'>
+                                <Line data={data} />
                             </div>
 
                         </div>
