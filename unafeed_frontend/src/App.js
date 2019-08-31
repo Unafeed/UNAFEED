@@ -104,7 +104,7 @@ class App extends Component {
                       </a>
                     </li>
                     <li className="mx-lg-4 mx-md-3 my-md-0 my-2">
-                      <a href="/unasense">
+                      <a href={`/unasense/${2611}`}>
                         <i className="fas fa-chart-line"></i>
                         &nbsp;UnaSense
                       </a>
@@ -378,7 +378,7 @@ class App extends Component {
           <Route exact path="/" component={(this.state.statusLogin) ? HomeLogin : HomeNoLogin}/>
           <Route path="/profil" render={(props) => <ProfilUser {...props} user={this.state.user} />}/>
           <Route path="/unastore" render={(props) => <UnaStore {...props} user={this.state.user} />}/>
-          <Route path="/unasense" render={(props) => <UnaSense {...props} user={this.state.user} />}/>
+          <Route path="/unasense/:iid" render={(props) => <UnaSense {...props} user={this.state.user} />}/>
           <Route path="/unaml" render={(props) => <UnaPredict {...props} user={this.state.user} />}/>
           <Route path="/cart/:uid" render={(props) => <UserCart {...props} user={this.state.user} />}/>
         </div>

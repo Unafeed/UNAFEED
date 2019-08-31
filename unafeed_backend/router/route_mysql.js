@@ -200,95 +200,48 @@ router.put('/update', (req, res)=>{
     })
 })
 
-// // GET all data
-// router.get('/data', (req, res) => {
-//     var dbStat = 'select * from products'
-//     db.query(dbStat, (error, output) => {
-//         if(error){
-//             console.log(error)
-//         } else {
-//             console.log(output)
-//             res.send(output)
-//         }
-//     })
-// })
+// =============================================
 
-// // GET data by id
-// router.get('/data/:id', (req, res) => {
-//     var dbStat = 'select * from products where id = ?'
-//     db.query(dbStat, req.params.id, (error, output) => {
-//         if(error){
-//             console.log(error)
-//         } else {
-//             console.log(output)
-//             res.send(output)
-//         }
-//     })
-// })
+// post iot data unasense
+router.post('/iot', (req, res) => {
+    var dbStat = 'insert into unasense (iid, isuhuu, isuhua, ilembab, ipressu, ialti, itangki) values (?,?,?,?,?,?,?)'
+    iid = req.body.iid
+    isuhuu = req.body.isuhuu
+    isuhua = req.body.isuhua
+    ilembab = req.body.ilembab
+    ipressu = req.body.ipressu
+    ialti = req.body.ialti
+    itangki = req.body.itangki
+    db.query(dbStat, [iid, isuhuu, isuhua, ilembab, ipressu, ialti, itangki], (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send({
+                status: 'ok',
+                iid: req.body.iid,
+                isuhuu: req.body.isuhuu,
+                isuhua: req.body.isuhua,
+                ilembab: req.body.ilembab,
+                ipressu: req.body.ipressu,
+                ialti: req.body.ialti,
+                itangki: req.body.itangki,
+            })
+        }
+    })
+})
 
-// // POST data
-// router.post('/data', (req, res)=>{
-//     var dbStat = 'insert into products set ?'
-//     var data = {
-//         product_name: req.body.nama,
-//         price: req.body.harga,
-//         info: req.body.info,
-//         quantity: req.body.jumlah
-//     }
-//     db.query(dbStat, data, (error, output) => {
-//         if(error){
-//             console.log(error)
-//             res.send(error)
-//         } else {
-//             console.log(output)
-//             res.send({
-//                 product_name: req.body.nama,
-//                 price: req.body.harga,
-//                 info: req.body.info,
-//                 quantity: req.body.jumlah,
-//                 status: 'Data terkirim' 
-//             })
-//         }
-//     })
-// })
-
-// // PUT edit data by id
-// router.put('/data/:id', (req, res)=>{
-//     var dbStat = 'update products set ? where id = ?'
-//     var data = {
-//         product_name: req.body.nama,
-//         price: req.body.harga,
-//         info: req.body.info,
-//         quantity: req.body.jumlah
-//     }
-//     db.query(dbStat, [data, req.params.id], (error, output) => {
-//         if(error){
-//             console.log(error)
-//             res.send(error)
-//         } else {
-//             console.log(output)
-//             res.send({
-//                 product_name: req.body.nama,
-//                 price: req.body.harga,
-//                 info: req.body.info,
-//                 quantity: req.body.jumlah,
-//                 status: 'Data terupdate' 
-//             })
-//         }
-//     })
-// })
-
-// // DELETE data by id
-// router.delete('/data/:id', (req, res)=>{
-//     var dbStat = 'delete from products where id = ?'
-//     db.query(dbStat, req.params.id, (error, output) => {
-//         if(error){
-//             console.log(error)
-//         } else {
-//             console.log(output)
-//             res.send(output)
-//         }
-//     })
-// })
+// get iot data (unasense) by id alat iid
+router.get('/iot/:iid', (req, res) => {
+    var dbStat = 'select * from unasense where iid = ?'
+    db.query(dbStat, req.params.iid, (error, output) => {
+        if(error){
+            console.log(error)
+        } else {
+            console.log(output)
+            res.send(output)
+        }
+    })
+})
 
 module.exports = router
