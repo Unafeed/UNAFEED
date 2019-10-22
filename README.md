@@ -1,4 +1,4 @@
-![simplinnovation](https://4.bp.blogspot.com/-f7YxPyqHAzY/WJ6VnkvE0SI/AAAAAAAADTQ/0tDQPTrVrtMAFT-q-1-3ktUQT5Il9FGdQCLcB/s350/simpLINnovation1a.png)
+![unafeed](./logo350.png)
 
 # UNAFEED
 
@@ -7,6 +7,10 @@
 3. Frontend: React
 4. Hardware: ESP32, Arduino
 5. Code Editor: Visual Studio Code
+
+![foto](./Unafeed1.jpg)
+
+3rd winner of Hack A Farm 2019 by Indmira, Yogyakarta
 
 #
 
